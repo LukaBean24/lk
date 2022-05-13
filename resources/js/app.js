@@ -1,4 +1,5 @@
 require('./bootstrap');
+require('./order')
 
 // Navbar dropdowns
 
@@ -31,3 +32,6 @@ document.getElementById('company_radio').onclick = function () {
     document.getElementById('customer_last').innerHTML = 'დირექტორის გვარი'
     document.getElementById('customer_name').innerHTML = 'დირექტორის სახელი'
 }
+
+// flash message
+

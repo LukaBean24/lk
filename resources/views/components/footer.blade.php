@@ -8,11 +8,28 @@
                 <p class="text-lg text-white">თეგები</p>
             </div>
             <div class="w-full h-5/6 flex flex-col items-start py-4 space-y-1">
-                <p class="text-white text-md hover:text-black duration-200">ბარათები</p>
-                <p class="text-white text-md hover:text-black duration-200">სადგურები</p>
-                <p class="text-white text-md hover:text-black duration-200">კომპანია</p>
-                <p class="text-white text-md hover:text-black duration-200">სიახლეები</p>
-                <p class="text-white text-md hover:text-black duration-200">კაბინეტი</p>
+                <a href="/cards">
+                    <p class="text-white text-md hover:text-black duration-200">ბარათები</p>
+                </a>
+                <a href="/stations">
+                    <p class="text-white text-md hover:text-black duration-200">სადგურები</p>
+                </a>
+                <a href="/news">
+                    <p class="text-white text-md hover:text-black duration-200">სიახლეები</p>
+                </a>
+                @auth
+                    <a href="/cabinet">
+                        <p class="text-white text-md hover:text-black duration-200">კაბინეტი</p>
+                    </a>
+                @endauth
+                @guest
+                    <a href="/login">
+                        <p class="text-white text-md hover:text-black duration-200">ავტორიზაცია</p>
+                    </a>
+                    <a href="/register">
+                        <p class="text-white text-md hover:text-black duration-200">რეგისტრაცია</p>
+                    </a>
+                @endguest
             </div>
         </span>
         <span class="col-span-1 w-full h-full">
@@ -24,9 +41,5 @@
                 <i class='bx bxl-instagram text-4xl text-white hover:text-black duration-200'></i>
             </div>
         </span>
-        {{-- <span class="col-span-1 w-full h-full bg-green-400">
-            <img src="https://lukoil.com/FileSystem/4/12881.png" alt="Map"
-                class="w-full h-full object-cover object-center">
-        </span> --}}
     </div>
 </div>

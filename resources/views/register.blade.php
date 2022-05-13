@@ -1,7 +1,7 @@
 <x-layout>
     <x-navbar></x-navbar>
     <x-page-content>
-        <div class="w-2/6 h-auto bg-lk-main flex flex-col justify-start items-center rounded-xl">
+        <div class="w-2/6 h-[650px] bg-lk-main flex flex-col justify-start items-center rounded-xl">
             <div class="w-full h-1/6 flex justify-center items-center mt-4">
                 <p class="text-white text-4xl">რეგისტრაცია</p>
             </div>

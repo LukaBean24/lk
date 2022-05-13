@@ -2162,7 +2162,9 @@ module.exports = {
   \*****************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // Navbar dropdowns
+__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+
+__webpack_require__(/*! ./order */ "./resources/js/order.js"); // Navbar dropdowns
 
 
 document.getElementById('cabinet').onmouseover = function () {
@@ -2192,7 +2194,7 @@ document.getElementById('company_radio').onclick = function () {
   document.getElementById('customer_id').innerHTML = 'საიდენტიფიკაციო ნომერი';
   document.getElementById('customer_last').innerHTML = 'დირექტორის გვარი';
   document.getElementById('customer_name').innerHTML = 'დირექტორის სახელი';
-};
+}; // flash message
 
 /***/ }),
 
@@ -2224,6 +2226,156 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/order.js":
+/*!*******************************!*\
+  !*** ./resources/js/order.js ***!
+  \*******************************/
+/***/ (() => {
+
+var super_ecto_100 = document.getElementById('super_ecto_100');
+var super_ecto = document.getElementById('super_ecto');
+var premium = document.getElementById('premium');
+var regular = document.getElementById('regular');
+var diesel = document.getElementById('diesel');
+var sum = document.getElementById('sum');
+var super_ecto_100_price = document.getElementById('super_ecto_100_price');
+var super_ecto_price = document.getElementById('super_ecto_price');
+var premium_price = document.getElementById('premium_price');
+var regular_price = document.getElementById('regular_price');
+var diesel_price = document.getElementById('diesel_price');
+var discount1 = document.getElementById("50_150");
+var discount2 = document.getElementById("150_500");
+var discount3 = document.getElementById("500_1000");
+var discount4 = document.getElementById("1000_5000");
+var discount5 = document.getElementById("5000_15000");
+
+super_ecto_100.oninput = function () {
+  full = parseInt(super_ecto_100.value) + parseInt(super_ecto.value) + parseInt(premium.value) + parseInt(regular.value) + parseInt(diesel.value);
+
+  if (full >= 50 && full <= 150) {
+    document.getElementById('discount').value = discount1.value;
+    sum.value = (parseInt(super_ecto_100.value) * (parseFloat(super_ecto_100_price.value) - parseFloat(discount1.value)) + parseInt(super_ecto.value) * (parseFloat(super_ecto_price.value) - parseFloat(discount1.value)) + parseInt(premium.value) * (parseFloat(premium_price.value) - parseFloat(discount1.value)) + parseInt(regular.value) * (parseFloat(regular_price.value) - parseFloat(discount1.value)) + parseInt(diesel.value) * (parseFloat(diesel_price.value) - parseFloat(discount1.value))).toFixed(2);
+  } else if (full < 50) {
+    sum.value = "შეკვეთა შეუძლებელია";
+  } else if (full > 150 && full <= 500) {
+    document.getElementById('discount').value = discount2.value;
+    sum.value = (parseInt(super_ecto_100.value) * (parseFloat(super_ecto_100_price.value) - parseFloat(discount2.value)) + parseInt(super_ecto.value) * (parseFloat(super_ecto_price.value) - parseFloat(discount2.value)) + parseInt(premium.value) * (parseFloat(premium_price.value) - parseFloat(discount2.value)) + parseInt(regular.value) * (parseFloat(regular_price.value) - parseFloat(discount2.value)) + parseInt(diesel.value) * (parseFloat(diesel_price.value) - parseFloat(discount2.value))).toFixed(2);
+  } else if (full > 500 && full <= 1000) {
+    document.getElementById('discount').value = discount3.value;
+    sum.value = (parseInt(super_ecto_100.value) * (parseFloat(super_ecto_100_price.value) - parseFloat(discount3.value)) + parseInt(super_ecto.value) * (parseFloat(super_ecto_price.value) - parseFloat(discount3.value)) + parseInt(premium.value) * (parseFloat(premium_price.value) - parseFloat(discount3.value)) + parseInt(regular.value) * (parseFloat(regular_price.value) - parseFloat(discount3.value)) + parseInt(diesel.value) * (parseFloat(diesel_price.value) - parseFloat(discount3.value))).toFixed(2);
+  } else if (full > 1000 && full <= 5000) {
+    document.getElementById('discount').value = discount4.value;
+    sum.value = (parseInt(super_ecto_100.value) * (parseFloat(super_ecto_100_price.value) - parseFloat(discount4.value)) + parseInt(super_ecto.value) * (parseFloat(super_ecto_price.value) - parseFloat(discount4.value)) + parseInt(premium.value) * (parseFloat(premium_price.value) - parseFloat(discount4.value)) + parseInt(regular.value) * (parseFloat(regular_price.value) - parseFloat(discount4.value)) + parseInt(diesel.value) * (parseFloat(diesel_price.value) - parseFloat(discount4.value))).toFixed(2);
+  } else if (full > 5000) {
+    document.getElementById('discount').value = discount5.value;
+    sum.value = (parseInt(super_ecto_100.value) * (parseFloat(super_ecto_100_price.value) - parseFloat(discount5.value)) + parseInt(super_ecto.value) * (parseFloat(super_ecto_price.value) - parseFloat(discount5.value)) + parseInt(premium.value) * (parseFloat(premium_price.value) - parseFloat(discount5.value)) + parseInt(regular.value) * (parseFloat(regular_price.value) - parseFloat(discount5.value)) + parseInt(diesel.value) * (parseFloat(diesel_price.value) - parseFloat(discount5.value))).toFixed(2);
+  }
+
+  document.getElementById('sum_liter').value = full;
+};
+
+super_ecto.oninput = function () {
+  full = parseInt(super_ecto_100.value) + parseInt(super_ecto.value) + parseInt(premium.value) + parseInt(regular.value) + parseInt(diesel.value);
+
+  if (full >= 50 && full <= 150) {
+    document.getElementById('discount').value = discount1.value;
+    sum.value = (parseInt(super_ecto_100.value) * (parseFloat(super_ecto_100_price.value) - parseFloat(discount1.value)) + parseInt(super_ecto.value) * (parseFloat(super_ecto_price.value) - parseFloat(discount1.value)) + parseInt(premium.value) * (parseFloat(premium_price.value) - parseFloat(discount1.value)) + parseInt(regular.value) * (parseFloat(regular_price.value) - parseFloat(discount1.value)) + parseInt(diesel.value) * (parseFloat(diesel_price.value) - parseFloat(discount1.value))).toFixed(2);
+  } else if (full < 50) {
+    sum.value = "შეკვეთა შეუძლებელია";
+  } else if (full > 150 && full <= 500) {
+    document.getElementById('discount').value = discount2.value;
+    sum.value = (parseInt(super_ecto_100.value) * (parseFloat(super_ecto_100_price.value) - parseFloat(discount2.value)) + parseInt(super_ecto.value) * (parseFloat(super_ecto_price.value) - parseFloat(discount2.value)) + parseInt(premium.value) * (parseFloat(premium_price.value) - parseFloat(discount2.value)) + parseInt(regular.value) * (parseFloat(regular_price.value) - parseFloat(discount2.value)) + parseInt(diesel.value) * (parseFloat(diesel_price.value) - parseFloat(discount2.value))).toFixed(2);
+  } else if (full > 500 && full <= 1000) {
+    document.getElementById('discount').value = discount3.value;
+    sum.value = (parseInt(super_ecto_100.value) * (parseFloat(super_ecto_100_price.value) - parseFloat(discount3.value)) + parseInt(super_ecto.value) * (parseFloat(super_ecto_price.value) - parseFloat(discount3.value)) + parseInt(premium.value) * (parseFloat(premium_price.value) - parseFloat(discount3.value)) + parseInt(regular.value) * (parseFloat(regular_price.value) - parseFloat(discount3.value)) + parseInt(diesel.value) * (parseFloat(diesel_price.value) - parseFloat(discount3.value))).toFixed(2);
+  } else if (full > 1000 && full <= 5000) {
+    document.getElementById('discount').value = discount4.value;
+    sum.value = (parseInt(super_ecto_100.value) * (parseFloat(super_ecto_100_price.value) - parseFloat(discount4.value)) + parseInt(super_ecto.value) * (parseFloat(super_ecto_price.value) - parseFloat(discount4.value)) + parseInt(premium.value) * (parseFloat(premium_price.value) - parseFloat(discount4.value)) + parseInt(regular.value) * (parseFloat(regular_price.value) - parseFloat(discount4.value)) + parseInt(diesel.value) * (parseFloat(diesel_price.value) - parseFloat(discount4.value))).toFixed(2);
+  } else if (full > 5000) {
+    document.getElementById('discount').value = discount5.value;
+    sum.value = (parseInt(super_ecto_100.value) * (parseFloat(super_ecto_100_price.value) - parseFloat(discount5.value)) + parseInt(super_ecto.value) * (parseFloat(super_ecto_price.value) - parseFloat(discount5.value)) + parseInt(premium.value) * (parseFloat(premium_price.value) - parseFloat(discount5.value)) + parseInt(regular.value) * (parseFloat(regular_price.value) - parseFloat(discount5.value)) + parseInt(diesel.value) * (parseFloat(diesel_price.value) - parseFloat(discount5.value))).toFixed(2);
+  }
+
+  document.getElementById('sum_liter').value = full;
+};
+
+premium.oninput = function () {
+  full = parseInt(super_ecto_100.value) + parseInt(super_ecto.value) + parseInt(premium.value) + parseInt(regular.value) + parseInt(diesel.value);
+
+  if (full >= 50 && full <= 150) {
+    document.getElementById('discount').value = discount1.value;
+    sum.value = (parseInt(super_ecto_100.value) * (parseFloat(super_ecto_100_price.value) - parseFloat(discount1.value)) + parseInt(super_ecto.value) * (parseFloat(super_ecto_price.value) - parseFloat(discount1.value)) + parseInt(premium.value) * (parseFloat(premium_price.value) - parseFloat(discount1.value)) + parseInt(regular.value) * (parseFloat(regular_price.value) - parseFloat(discount1.value)) + parseInt(diesel.value) * (parseFloat(diesel_price.value) - parseFloat(discount1.value))).toFixed(2);
+  } else if (full < 50) {
+    sum.value = "შეკვეთა შეუძლებელია";
+  } else if (full > 150 && full <= 500) {
+    document.getElementById('discount').value = discount2.value;
+    sum.value = (parseInt(super_ecto_100.value) * (parseFloat(super_ecto_100_price.value) - parseFloat(discount2.value)) + parseInt(super_ecto.value) * (parseFloat(super_ecto_price.value) - parseFloat(discount2.value)) + parseInt(premium.value) * (parseFloat(premium_price.value) - parseFloat(discount2.value)) + parseInt(regular.value) * (parseFloat(regular_price.value) - parseFloat(discount2.value)) + parseInt(diesel.value) * (parseFloat(diesel_price.value) - parseFloat(discount2.value))).toFixed(2);
+  } else if (full > 500 && full <= 1000) {
+    document.getElementById('discount').value = discount3.value;
+    sum.value = (parseInt(super_ecto_100.value) * (parseFloat(super_ecto_100_price.value) - parseFloat(discount3.value)) + parseInt(super_ecto.value) * (parseFloat(super_ecto_price.value) - parseFloat(discount3.value)) + parseInt(premium.value) * (parseFloat(premium_price.value) - parseFloat(discount3.value)) + parseInt(regular.value) * (parseFloat(regular_price.value) - parseFloat(discount3.value)) + parseInt(diesel.value) * (parseFloat(diesel_price.value) - parseFloat(discount3.value))).toFixed(2);
+  } else if (full > 1000 && full <= 5000) {
+    document.getElementById('discount').value = discount4.value;
+    sum.value = (parseInt(super_ecto_100.value) * (parseFloat(super_ecto_100_price.value) - parseFloat(discount4.value)) + parseInt(super_ecto.value) * (parseFloat(super_ecto_price.value) - parseFloat(discount4.value)) + parseInt(premium.value) * (parseFloat(premium_price.value) - parseFloat(discount4.value)) + parseInt(regular.value) * (parseFloat(regular_price.value) - parseFloat(discount4.value)) + parseInt(diesel.value) * (parseFloat(diesel_price.value) - parseFloat(discount4.value))).toFixed(2);
+  } else if (full > 5000) {
+    document.getElementById('discount').value = discount5.value;
+    sum.value = (parseInt(super_ecto_100.value) * (parseFloat(super_ecto_100_price.value) - parseFloat(discount5.value)) + parseInt(super_ecto.value) * (parseFloat(super_ecto_price.value) - parseFloat(discount5.value)) + parseInt(premium.value) * (parseFloat(premium_price.value) - parseFloat(discount5.value)) + parseInt(regular.value) * (parseFloat(regular_price.value) - parseFloat(discount5.value)) + parseInt(diesel.value) * (parseFloat(diesel_price.value) - parseFloat(discount5.value))).toFixed(2);
+  }
+
+  document.getElementById('sum_liter').value = full;
+};
+
+diesel.oninput = function () {
+  full = parseInt(super_ecto_100.value) + parseInt(super_ecto.value) + parseInt(premium.value) + parseInt(regular.value) + parseInt(diesel.value);
+
+  if (full >= 50 && full <= 150) {
+    document.getElementById('discount').value = discount1.value;
+    sum.value = (parseInt(super_ecto_100.value) * (parseFloat(super_ecto_100_price.value) - parseFloat(discount1.value)) + parseInt(super_ecto.value) * (parseFloat(super_ecto_price.value) - parseFloat(discount1.value)) + parseInt(premium.value) * (parseFloat(premium_price.value) - parseFloat(discount1.value)) + parseInt(regular.value) * (parseFloat(regular_price.value) - parseFloat(discount1.value)) + parseInt(diesel.value) * (parseFloat(diesel_price.value) - parseFloat(discount1.value))).toFixed(2);
+  } else if (full < 50) {
+    sum.value = "შეკვეთა შეუძლებელია";
+  } else if (full > 150 && full <= 500) {
+    document.getElementById('discount').value = discount2.value;
+    sum.value = (parseInt(super_ecto_100.value) * (parseFloat(super_ecto_100_price.value) - parseFloat(discount2.value)) + parseInt(super_ecto.value) * (parseFloat(super_ecto_price.value) - parseFloat(discount2.value)) + parseInt(premium.value) * (parseFloat(premium_price.value) - parseFloat(discount2.value)) + parseInt(regular.value) * (parseFloat(regular_price.value) - parseFloat(discount2.value)) + parseInt(diesel.value) * (parseFloat(diesel_price.value) - parseFloat(discount2.value))).toFixed(2);
+  } else if (full > 500 && full <= 1000) {
+    document.getElementById('discount').value = discount3.value;
+    sum.value = (parseInt(super_ecto_100.value) * (parseFloat(super_ecto_100_price.value) - parseFloat(discount3.value)) + parseInt(super_ecto.value) * (parseFloat(super_ecto_price.value) - parseFloat(discount3.value)) + parseInt(premium.value) * (parseFloat(premium_price.value) - parseFloat(discount3.value)) + parseInt(regular.value) * (parseFloat(regular_price.value) - parseFloat(discount3.value)) + parseInt(diesel.value) * (parseFloat(diesel_price.value) - parseFloat(discount3.value))).toFixed(2);
+  } else if (full > 1000 && full <= 5000) {
+    document.getElementById('discount').value = discount4.value;
+    sum.value = (parseInt(super_ecto_100.value) * (parseFloat(super_ecto_100_price.value) - parseFloat(discount4.value)) + parseInt(super_ecto.value) * (parseFloat(super_ecto_price.value) - parseFloat(discount4.value)) + parseInt(premium.value) * (parseFloat(premium_price.value) - parseFloat(discount4.value)) + parseInt(regular.value) * (parseFloat(regular_price.value) - parseFloat(discount4.value)) + parseInt(diesel.value) * (parseFloat(diesel_price.value) - parseFloat(discount4.value))).toFixed(2);
+  } else if (full > 5000) {
+    document.getElementById('discount').value = discount5.value;
+    sum.value = (parseInt(super_ecto_100.value) * (parseFloat(super_ecto_100_price.value) - parseFloat(discount5.value)) + parseInt(super_ecto.value) * (parseFloat(super_ecto_price.value) - parseFloat(discount5.value)) + parseInt(premium.value) * (parseFloat(premium_price.value) - parseFloat(discount5.value)) + parseInt(regular.value) * (parseFloat(regular_price.value) - parseFloat(discount5.value)) + parseInt(diesel.value) * (parseFloat(diesel_price.value) - parseFloat(discount5.value))).toFixed(2);
+  }
+
+  document.getElementById('sum_liter').value = full;
+};
+
+regular.oninput = function () {
+  full = parseInt(super_ecto_100.value) + parseInt(super_ecto.value) + parseInt(premium.value) + parseInt(regular.value) + parseInt(diesel.value);
+
+  if (full >= 50 && full <= 150) {
+    document.getElementById('discount').value = discount1.value;
+    sum.value = (parseInt(super_ecto_100.value) * (parseFloat(super_ecto_100_price.value) - parseFloat(discount1.value)) + parseInt(super_ecto.value) * (parseFloat(super_ecto_price.value) - parseFloat(discount1.value)) + parseInt(premium.value) * (parseFloat(premium_price.value) - parseFloat(discount1.value)) + parseInt(regular.value) * (parseFloat(regular_price.value) - parseFloat(discount1.value)) + parseInt(diesel.value) * (parseFloat(diesel_price.value) - parseFloat(discount1.value))).toFixed(2);
+  } else if (full < 50) {
+    sum.value = "შეკვეთა შეუძლებელია";
+  } else if (full > 150 && full <= 500) {
+    document.getElementById('discount').value = discount2.value;
+    sum.value = (parseInt(super_ecto_100.value) * (parseFloat(super_ecto_100_price.value) - parseFloat(discount2.value)) + parseInt(super_ecto.value) * (parseFloat(super_ecto_price.value) - parseFloat(discount2.value)) + parseInt(premium.value) * (parseFloat(premium_price.value) - parseFloat(discount2.value)) + parseInt(regular.value) * (parseFloat(regular_price.value) - parseFloat(discount2.value)) + parseInt(diesel.value) * (parseFloat(diesel_price.value) - parseFloat(discount2.value))).toFixed(2);
+  } else if (full > 500 && full <= 1000) {
+    document.getElementById('discount').value = discount3.value;
+    sum.value = (parseInt(super_ecto_100.value) * (parseFloat(super_ecto_100_price.value) - parseFloat(discount3.value)) + parseInt(super_ecto.value) * (parseFloat(super_ecto_price.value) - parseFloat(discount3.value)) + parseInt(premium.value) * (parseFloat(premium_price.value) - parseFloat(discount3.value)) + parseInt(regular.value) * (parseFloat(regular_price.value) - parseFloat(discount3.value)) + parseInt(diesel.value) * (parseFloat(diesel_price.value) - parseFloat(discount3.value))).toFixed(2);
+  } else if (full > 1000 && full <= 5000) {
+    document.getElementById('discount').value = discount4.value;
+    sum.value = (parseInt(super_ecto_100.value) * (parseFloat(super_ecto_100_price.value) - parseFloat(discount4.value)) + parseInt(super_ecto.value) * (parseFloat(super_ecto_price.value) - parseFloat(discount4.value)) + parseInt(premium.value) * (parseFloat(premium_price.value) - parseFloat(discount4.value)) + parseInt(regular.value) * (parseFloat(regular_price.value) - parseFloat(discount4.value)) + parseInt(diesel.value) * (parseFloat(diesel_price.value) - parseFloat(discount4.value))).toFixed(2);
+  } else if (full > 5000) {
+    document.getElementById('discount').value = discount5.value;
+    sum.value = (parseInt(super_ecto_100.value) * (parseFloat(super_ecto_100_price.value) - parseFloat(discount5.value)) + parseInt(super_ecto.value) * (parseFloat(super_ecto_price.value) - parseFloat(discount5.value)) + parseInt(premium.value) * (parseFloat(premium_price.value) - parseFloat(discount5.value)) + parseInt(regular.value) * (parseFloat(regular_price.value) - parseFloat(discount5.value)) + parseInt(diesel.value) * (parseFloat(diesel_price.value) - parseFloat(discount5.value))).toFixed(2);
+  }
+
+  document.getElementById('sum_liter').value = full;
+};
 
 /***/ }),
 
