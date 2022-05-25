@@ -41,9 +41,9 @@ Route::get('/contact', [IndexController::class, 'contact']);
 
 
 // Login and Logout Routes
-Route::get('/login', [SessionController::class, 'index'])->middleware('guest')->name('session.index');
-Route::post('/login', [SessionController::class, 'store'])->middleware('guest')->name('session.store');
-Route::post('/logout', [SessionController::class, 'destroy'])->name('session.destroy');
+Route::get('/login', [SessionController::class, 'index'])->middleware('guest')->name('session.index')->middleware('guest');
+Route::post('/login', [SessionController::class, 'store'])->middleware('guest')->name('session.store')->middleware('guest');
+Route::post('/logout', [SessionController::class, 'destroy'])->name('session.destroy')->middleware('auth');
 
 // Register Routes
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest')->name('register.index');
@@ -51,14 +51,14 @@ Route::post('/register', [RegisterController::class, 'store'])->middleware('gues
 
 // Cabinet Routes
 Route::get('/cabinet',[CabinetController::class, 'index'])->middleware('auth');
-Route::get('/fuel-order', [OrderController::class, 'fuel_view']);
-Route::get('/card-order',[OrderController::class, 'card_view']);
-Route::post('/fuel-order', [OrderController::class, "fuel_store"]);
-Route::post('/card-order', [OrderController::class, "card_store"]);
-Route::put('/order/{order}', [OrderController::class, "block"]);
-Route::get('/invoice/{order}', [InvoiceController::class, 'index']);
-Route::get('/invoice1/{order}', [InvoiceController::class, 'index1']);
-Route::put('/order/{order}/paycheck', [OrderController::class, "uploadPaycheck"]);
+Route::get('/fuel-order', [OrderController::class, 'fuel_view'])->middleware('auth');
+Route::get('/card-order',[OrderController::class, 'card_view'])->middleware('auth');
+Route::post('/fuel-order', [OrderController::class, "fuel_store"])->middleware('auth');
+Route::post('/card-order', [OrderController::class, "card_store"])->middleware('auth');
+Route::put('/order/{order}', [OrderController::class, "block"])->middleware('auth');
+Route::get('/invoice/{order}', [InvoiceController::class, 'index'])->middleware('auth');
+Route::get('/invoice1/{order}', [InvoiceController::class, 'index1'])->middleware('auth');
+Route::put('/order/{order}/paycheck', [OrderController::class, "uploadPaycheck"])->middleware('auth');
 
 // Admin Routes
 Route::get('/admin', [AdminController::class, 'index'])->middleware('admin');
