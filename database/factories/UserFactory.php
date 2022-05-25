@@ -25,7 +25,8 @@ class UserFactory extends Factory
             'customer_id' => '01027078510',
             'email' => 'lkochlo24@gmail.com',
             'phone' => '599683121',
-            "password" => '$2y$10$yrg50oWoq/JOUBbT6lZGGeYSnm1OLAeHrFYWOvCfupN33Ikkc0oAG'
+            'is_admin' => 'true',
+            "password" => '$2y$10$yrg50oWoq/JOUBbT6lZGGeYSnm1OLAeHrFYWOvCfupN33Ikkc0oAG',
         ];
     }
 

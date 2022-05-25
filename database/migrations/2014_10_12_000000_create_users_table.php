@@ -24,6 +24,8 @@ return new class extends Migration
             $table->bigInteger('phone');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('discount')->nullable();
+            $table->string('is_admin')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

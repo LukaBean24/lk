@@ -29,12 +29,12 @@ class SessionController extends Controller
 
         if ($check) {
             if (auth()->attempt($credentials)) {
-                return redirect("/")->with('success', "Logged in successfully");
+                return redirect("/")->with('success', __("succ_login"));
             } else {
-                return back()->with('danger', 'Your typed credentials are not valid');
+                return back()->with('danger', __('invalid_cred'));
             }
         } else {
-            return back()->with('danger', 'Your typed credentials are not valid');
+            return back()->with('danger', __('invalid_cred'));
         }
 
 
@@ -43,6 +43,6 @@ class SessionController extends Controller
     public function destroy() {
         auth()->logout();
 
-        return redirect('/')->with('success' , "You have been Logged out");
+        return redirect('/')->with('success' , __('succ_logout'));
     }
 }

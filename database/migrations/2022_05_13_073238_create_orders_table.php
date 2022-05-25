@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->references('id')->on('users')->cascadeOnDelete();
+            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
             $table->integer('super_ecto_100')->nullable();
             $table->integer('super_ecto')->nullable();
             $table->integer('premium')->nullable();
@@ -33,6 +33,8 @@ return new class extends Migration
             $table->bigInteger('sum_liter')->nullable();
             $table->text('order_info');
             $table->text('order_type');
+            $table->text('paycheck')->nullable();
+            $table->text('personalization')->nullable();
             $table->timestamps();
         });
     }

@@ -2160,29 +2160,19 @@ module.exports = {
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
   \*****************************/
-/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+/* harmony import */ var _bootstrap__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_bootstrap__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _order__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./order */ "./resources/js/order.js");
+/* harmony import */ var _order__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_order__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _leaflet__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./leaflet */ "./resources/js/leaflet.js");
+/* harmony import */ var _leaflet__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_leaflet__WEBPACK_IMPORTED_MODULE_2__);
 
-__webpack_require__(/*! ./order */ "./resources/js/order.js"); // Navbar dropdowns
 
-
-document.getElementById('cabinet').onmouseover = function () {
-  document.getElementById('cabinet-down').style.display = 'flex';
-};
-
-document.getElementById('cabinet-down').onmouseleave = function () {
-  document.getElementById('cabinet-down').style.display = 'none';
-};
-
-document.getElementById('company').onmouseover = function () {
-  document.getElementById('company-down').style.display = 'flex';
-};
-
-document.getElementById('company-down').onmouseleave = function () {
-  document.getElementById('company-down').style.display = 'none';
-}; // Register Radios
-
+ // Register Radios
 
 document.getElementById('person_radio').onclick = function () {
   document.getElementById('company_name').style.display = 'none';
@@ -2195,6 +2185,22 @@ document.getElementById('company_radio').onclick = function () {
   document.getElementById('customer_last').innerHTML = 'დირექტორის გვარი';
   document.getElementById('customer_name').innerHTML = 'დირექტორის სახელი';
 }; // flash message
+
+
+setTimeout(function () {
+  document.getElementById('message').style.opacity = 0;
+  document.getElementById('message').style.right = "-300px";
+}, 2000); // Map
+
+var map = L.map('map').setView([51.505, -0.09], 13);
+L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+  attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+  maxZoom: 18,
+  id: 'mapbox/streets-v11',
+  tileSize: 512,
+  zoomOffset: -1,
+  accessToken: 'your.mapbox.access.token'
+}).addTo(map);
 
 /***/ }),
 
@@ -2226,6 +2232,24 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/leaflet.js":
+/*!*********************************!*\
+  !*** ./resources/js/leaflet.js ***!
+  \*********************************/
+/***/ (() => {
+
+var map = L.map('map').setView([51.505, -0.09], 13);
+L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+  attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+  maxZoom: 18,
+  id: 'mapbox/streets-v11',
+  tileSize: 512,
+  zoomOffset: -1,
+  accessToken: 'your.mapbox.access.token'
+}).addTo(map);
 
 /***/ }),
 
@@ -19860,6 +19884,30 @@ process.umask = function() { return 0; };
 /******/ 				}
 /******/ 			}
 /******/ 			return result;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
 /******/ 		};
 /******/ 	})();
 /******/ 	

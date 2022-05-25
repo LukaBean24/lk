@@ -26,7 +26,7 @@ class RegisterController extends Controller
         $attributes['password'] = bcrypt(request('password'));
 
         if (User::create($attributes)) {
-            return redirect('/login')->with('success', 'Please log in to your account');
+            return redirect('/login')->with('success', __('please_login'));
         } else {
             return 0;
         }

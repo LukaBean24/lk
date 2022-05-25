@@ -3,8 +3,10 @@
 namespace Database\Seeders;
 
 use App\Models\Discount;
+use App\Models\Post;
 use App\Models\Price;
 use App\Models\User;
+use App\Models\Vacancy;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -27,5 +29,7 @@ class DatabaseSeeder extends Seeder
         Price::factory()->create();
         User::factory()->create();
         Discount::factory()->create();
+        Post::factory(10)->create();
+        Vacancy::factory(5)->create();
     }
 }

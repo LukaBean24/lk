@@ -11,6 +11,17 @@ class Order extends Model
 
     protected $guarded = [];
 
+    public function scopeFilter($query)
+    {
+        if (request('search')) {
+            $query->
+            where('customer_name', 'like', '%' . request('search') . '%')
+            ->orWhere('customer_last', 'like', '%' . request('search') . '%')
+            ->orWhere('customer_id', 'like', '%' . request('search') . '%')
+            ->orWhere('company_name', 'like', '%' . request('search') . '%');
+        }
+    }
+
     public function user() {
         return $this->belongsTo(User::class);
     }

@@ -38,6 +38,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function scopeFilter($query) {
+        if (request('search')) {
+            $query->
+            where('customer_name', 'like', '%' . request('search') . '%')
+            ->orWhere('customer_last', 'like', '%' . request('search') . '%')
+            ->orWhere('customer_id', 'like', '%' . request('search') . '%')
+            ->orWhere('company_name', 'like', '%' . request('search') . '%');
+        }
+    }
+
     public function orders() {
         return $this->hasMany(Order::class);
     }

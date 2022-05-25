@@ -1,5 +1,5 @@
 <div id="message"
-    {{ $attributes->merge(['class' => 'w-72 opacity-100 h-16 fixed duration-200 bottom-8 right-8 flex justify-center items-center z-10']) }}>
+    {{ $attributes->merge(['class' => 'w-72 opacity-100 h-16 fixed duration-200 bottom-8 right-8 flex justify-center items-center z-10 text-white font-semibold text-md text-center']) }}>
     <p>{{ $slot }}</p>
 </div>
 <script>
