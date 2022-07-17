@@ -10,7 +10,6 @@
                 <th scope="col" class="px-3 py-3 text-center text-sm tracking-wide text-lk-main font-semibold">საიდენტიფიკაციო</th>
                 <th scope="col" class="px-3 py-3 text-center text-sm tracking-wide text-lk-main font-semibold">ელ-ფოსტა</th>
                 <th scope="col" class="px-3 py-3 text-center text-sm tracking-wide text-lk-main font-semibold">ტელეფონის ნომერი</th>
-                <th scope="col" class="px-3 py-3 text-center text-sm tracking-wide text-lk-main font-semibold">დარეგისტრირების თარიღი</th>
                 <th scope="col" class="px-3 py-3 text-center text-sm tracking-wide text-lk-main font-semibold">ფასდაკლება</th>
                 <th scope="col" class="px-3 py-3 text-center text-sm tracking-wide text-lk-main font-semibold">ადმინის პრივილეგია</th>
                 <th scope="col" class="px-3 py-3 text-center text-sm tracking-wide text-lk-main font-semibold">შეცვლა</th>
@@ -51,9 +50,7 @@
                         {{$user->phone}}
                     </p>
                   </td>
-                  <td class="whitespace-nowrap px-3 py-4 text-sm text-lk-main font-semibold text-center">
-                    <p class="text-sm">{{$user->created_at}}</p>
-                  </td>
+
                   <td class="whitespace-nowrap px-3 py-4 text-sm text-lk-main font-semibold text-center">
                     <p class="text-sm">
                         @switch($user->discount)

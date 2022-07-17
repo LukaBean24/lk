@@ -1,9 +1,11 @@
 @props(['user'])
-<nav class="fixed top-0 h-[250px] bg-white z-50">
+<nav class="fixed top-0 h-[250px] bg-white z-40">
     <div class="w-screen h-8 bg-lk-main flex justify-center items-center">
         <div class="w-11/12 lg:w-3/5 h-full grid grid-cols-5">
             <span class="col-span-2 flex items-center px-4 lg:px-0">
-                <p class="text-white text-sm whitespace-nowrap">{{__('global_bussines')}}</p>
+                <a href="http://lukoil.com">
+                    <p class="text-white text-sm whitespace-nowrap">{{__('global_bussines')}}</p>
+                </a>
             </span>
             <span class="col-span-3 lg:flex justify-end items-center space-x-6 hidden">
                 <a href="/">
@@ -53,54 +55,45 @@
                 <img src="https://brandlogos.net/wp-content/uploads/2022/01/lukoil-logo-brandlogo.net_.png" width="70"
                     alt="Logo">
             </span>
-            <span class="col-span-6 xl:flex items-end justify-end space-x-8 pb-2 relative hidden">
-                <a href="/cards">
-                    <p class="text-xl text-black duration-200 hover:text-lk-main">{{__('cards')}}</p>
-                </a>
-                <a href="/stations">
-                    <p class="text-xl text-black duration-200 hover:text-lk-main">{{__('stations')}}</p>
-                </a>
-                <a href="#">
-                    <p class="text-xl text-black duration-200 hover:text-lk-main" id="company">{{__('company')}}</p>
-                </a>
-                <div id="company-down"
-                    class="w-48 h-48 bg-lk-main hidden absolute -bottom-48 right-1/4 flex-col justify-evenly items-center shadow-lg shadow-black">
-                    <p class="text-xl hover:text-black duration-200 text-white"> <a href="/management">{{__('management')}}</a> </p>
-                    <p class="text-xl hover:text-black duration-200 text-white"><a href="/contact">{{__('contact')}}</a></p>
+            <span class="col-span-6 xl:flex items-end justify-end relative hidden">
+<div class="w-40 h-10  flex items-center justify-center">
+            <a href="/cards"><button class="text-black text-xl hover:text-lk-main duration-200">ბარათები</button></a>
+        </div>
+        <div class="w-40 h-10  flex items-center justify-center">
+            <a href="/stations"><button class="text-black text-xl hover:text-lk-main duration-200">სადგურები</button></a>
+        </div>
+        <div class="w-40 h-10  flex items-center justify-center group relative">
+            <button class="text-black text-xl hover:text-lk-main duration-200">კომპანია</button>
+            <div class="hidden w-40 h-40 group-hover:flex flex-col justify-evenly items-center absolute bg-lk-main min-w-40 z-10 -bottom-40 text-white">
+                <a href="/management" class="hover:text-black duration-200">მენეჯმენტი</a>
+                <a href="/about-us" class="hover:text-black duration-200">ჩვენს შესახებ</a>
+                <a href="/contact" class="hover:text-black duration-200">კონტაქტი</a>
+            </div>
+        </div>
+        <div class="w-40 h-10  flex items-center justify-center">
+            <a href="/news"><button class="text-black text-xl hover:text-lk-main duration-200">სიახლეები</button></a>
+        </div>
+       @guest
+            <div class="w-40 h-10  flex items-center justify-center relative group">
+                <button class="text-black text-xl hover:text-lk-main duration-200">კაბინეტი</button>
+                <div class="hidden h-40 w-40 absolute group-hover:flex justify-evenly items-center flex-col bg-lk-main z-10 -bottom-40 text-white">
+                    <a href="/register" class="hover:text-black duration-200">რეგისტრაცია</a>
+                    <a href="/login" class="hover:text-black duration-200">შესვლა</a>
                 </div>
-                <a href="/news">
-                    <p class="text-xl text-black duration-200 hover:text-lk-main">{{__('news')}}</p>
-                </a>
-                @auth
-                    <a href="/cabinet">
-                        <p class="text-xl text-black duration-200 hover:text-lk-main" id="cabinet">{{__('cabinet')}}</p>
-                    </a>
-                @endauth
-                @guest
-                    <p class="text-xl text-black duration-200 hover:text-lk-main cursor-pointer" id="cabinet">{{__('cabinet')}}</p>
-                    <div id="cabinet-down"
-                        class="w-48 h-48 bg-lk-main hidden absolute -bottom-48 -right-24 flex-col justify-evenly items-center shadow-lg shadow-black">
-                        <a href="/login">
-                            <p class="text-xl hover:text-black duration-200 text-white">{{__('login')}}</p>
-                        </a>
-                        <a href="/register">
-                            <p class="text-xl hover:text-black duration-200 text-white">{{__('register')}}</p>
-                        </a>
-                    </div>
-                @endguest
-                @auth
-                @switch(auth()->user()->is_admin)
-                @case(!null)
-                    <a href="/admin">
-                        <p class="text-xl text-black duration-200 hover:text-lk-main" id="cabinet">ადმინ პანელი</p>
-                    </a>
-                @break
-                    @case(null)
-
-                    @break
-                @default
-            @endswitch
-                @endauth
+            </div>
+       @endguest
+       @auth
+           <div class="w-40 h-10  flex items-center justify-center relative group">
+                <a href="/cabinet"><button class="text-black text-xl hover:text-lk-main duration-200">კაბინეტი</button></a>
+            </div>
+       @endauth
+       @auth
+           @if (auth()->user()->is_admin == 'true')
+            <div class="w-40 h-10  flex items-center justify-center relative group">
+                <a href="/admin"><button class="text-black text-xl hover:text-lk-main duration-200">ადმინ პანელი</button></a>
+            </div>
+       @endif
+       @endauth
             </span>
             <span class="col-span-6 w-11/12 h-full flex justify-end items-center px-4 xl:hidden">
                 <div class="w-12 h-10 flex flex-col justify-between items-center" id="burger">
@@ -117,21 +110,3 @@
         </div>
     </div>
 </nav>
-<script>
-    document.getElementById('cabinet').onmouseover = function() {
-        document.getElementById('cabinet-down').style.display = 'flex'
-    }
-
-    document.getElementById('cabinet-down').onmouseleave = function() {
-        document.getElementById('cabinet-down').style.display = 'none'
-    }
-
-    document.getElementById('company').onmouseover = function() {
-        document.getElementById('company-down').style.display = 'flex'
-    }
-
-    document.getElementById('company-down').onmouseleave = function() {
-        document.getElementById('company-down').style.display = 'none'
-    }
-
-</script>

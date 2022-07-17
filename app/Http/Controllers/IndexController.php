@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Carousel;
+use App\Models\Notification;
 use App\Models\Post;
 use App\Models\Price;
 use App\Models\Station;
@@ -14,12 +16,16 @@ class IndexController extends Controller
         return view('index', [
             'prices' => Price::latest()->first(),
             'posts' => Post::all(),
+            'notification' => Notification::latest()->first(),
+            'banners' => Carousel::all(),
+            'banner_first' => Carousel::first(),
+            'banner_last' => Carousel::latest()->first(),
         ]);
     }
 
-    public function singlePost($link) {
+    public function singlePost($id) {
         return view('singe-post',[
-            'post' => Post::where('link',$link)->first(),
+            'post' => Post::find($id),
         ]);
     }
 
@@ -62,5 +68,21 @@ class IndexController extends Controller
 
     public function contact() {
         return view('contact');
+    }
+
+    public function priceHistory() {
+        return view('price-history', [
+            'prices' => Price::all(),
+        ]);
+    }
+
+    public function cards()
+    {
+        return view('cards');
+    }
+
+    public function aboutUs()
+    {
+        return view('about-us');
     }
 }

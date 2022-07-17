@@ -21,6 +21,15 @@
             <a href="/admin/prices">
                 <p class="text-md text-lk-main font-semibold hover:text-black duration-200">ფასები</p>
             </a>
+            <a href="/admin/vacancies">
+                <p class="text-md text-lk-main font-semibold hover:text-black duration-200">ვაკანსიები</p>
+            </a>
+            <a href="/admin/notification">
+                <p class="text-md text-lk-main font-semibold hover:text-black duration-200">შეტყობინება</p>
+            </a>
+            <a href="/admin/carousel">
+                <p class="text-md text-lk-main font-semibold hover:text-black duration-200">ბანერები</p>
+            </a>
         </div>
     </div>
 </div>

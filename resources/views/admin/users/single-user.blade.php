@@ -70,5 +70,11 @@
                     </button>
                 </div>
         </form>
+        <div class="w-2/5 h-24 flex flex-col justify-center items-start p-8 space-y-2">
+            <form action="/admin/discount-block/{{$user->id}}" class="w-full h-full" method="POST">
+                @csrf
+                <button type="submit" class="w-full h-12 rounded-lg hover:bg-red-600 duration-200 bg-lk-main text-white text-xl font-semibold">ფასდაკლების გაუქმება</button>
+            </form>
+        </div>
     </div>
 </x-layout>

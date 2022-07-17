@@ -89,7 +89,7 @@
     "lukoil": "\"Lukoil Georgia\"",
     "company_id": "Company ID Number",
     "lukoil_address": "Tbilisi, Vake-Saburtalo, near Gotua st.",
-    "monday_friday": "From Monday to Friday: 10:00 - 18:00",
+    "monday_friday": "From Monday to Friday: 10:00 - 17:30",
     "saturday": "Saturday: 11:00 - 15:00",
     "person_id": "Person ID Number",
     "dir_name": "Director's Name",
@@ -101,5 +101,6 @@
     "order_made": "Order has been sent successfully",
     "please_login": "You have been registered successfully, please log in",
     "succ_login": "You have been logged in successfully",
-    "invalid_cred": "Typed credentials are not valid"
+    "invalid_cred": "Typed credentials are not valid",
+    "about_us": "About Us"
 }

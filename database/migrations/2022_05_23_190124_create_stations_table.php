@@ -17,9 +17,12 @@ return new class extends Migration
             $table->id();
             $table->text('lang');
             $table->text('long');
-            $table->text('city');
-            $table->text('address');
+            $table->string('city');
+            $table->string('address');
             $table->text('number');
+            $table->string('phone');
+            $table->string('manager');
+            $table->text('email');
             $table->text('type');
             $table->timestamps();
         });

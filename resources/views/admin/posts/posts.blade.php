@@ -29,8 +29,10 @@
                         <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm  text-lk-main sm:pl-6">{{$post->title}}</td>
                         <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm  text-lk-main sm:pl-6">{{$post->slug}}</td>
                         <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm  text-lk-main sm:pl-6">
-                            <button>წაშლა</button>
-                            <button>შეცვლა</button>
+                            <form action="/admin/posts/{{$post->id}}" method="POST">
+                                @csrf
+                                <button type="submit">წაშლა</button>
+                            </form>
                         </td>
                       </tr>
                       @endforeach

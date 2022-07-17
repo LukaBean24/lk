@@ -60,4 +60,10 @@ class AdminUsersController extends Controller
         $user->save();
         return redirect('/admin/users')->with('success', "ადმინის პრივილეგია წართმეულია");
     }
+    public function discountBlock(User $user) {
+        $user->discount = null;
+        $user->save();
+
+        return redirect('/admin/users')->with('success', 'სპეც-ფასდაკლება გაუქმებულია');
+    }
 }

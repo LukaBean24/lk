@@ -2168,39 +2168,61 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _bootstrap__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_bootstrap__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _order__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./order */ "./resources/js/order.js");
 /* harmony import */ var _order__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_order__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _leaflet__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./leaflet */ "./resources/js/leaflet.js");
-/* harmony import */ var _leaflet__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_leaflet__WEBPACK_IMPORTED_MODULE_2__);
-
 
  // Register Radios
 
-document.getElementById('person_radio').onclick = function () {
-  document.getElementById('company_name').style.display = 'none';
-  document.getElementById('customer_id').innerHTML = 'პირადი ნომერი';
+document.getElementById("person_radio").onclick = function () {
+  document.getElementById("company_name").style.display = "none";
+  document.getElementById("customer_id").innerHTML = "პირადი ნომერი";
 };
 
-document.getElementById('company_radio').onclick = function () {
-  document.getElementById('company_name').style.display = 'flex';
-  document.getElementById('customer_id').innerHTML = 'საიდენტიფიკაციო ნომერი';
-  document.getElementById('customer_last').innerHTML = 'დირექტორის გვარი';
-  document.getElementById('customer_name').innerHTML = 'დირექტორის სახელი';
+document.getElementById("company_radio").onclick = function () {
+  document.getElementById("company_name").style.display = "flex";
+  document.getElementById("customer_id").innerHTML = "საიდენტიფიკაციო ნომერი";
+  document.getElementById("customer_last").innerHTML = "დირექტორის გვარი";
+  document.getElementById("customer_name").innerHTML = "დირექტორის სახელი";
 }; // flash message
 
 
 setTimeout(function () {
-  document.getElementById('message').style.opacity = 0;
-  document.getElementById('message').style.right = "-300px";
-}, 2000); // Map
+  document.getElementById("message").style.opacity = 0;
+  document.getElementById("message").style.right = "-300px";
+}, 2000);
+var carouselSlide = document.querySelector(".carousel-slide");
+var carouselImages = document.querySelectorAll(".carousel-slide img"); //buttons
 
-var map = L.map('map').setView([51.505, -0.09], 13);
-L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-  attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-  maxZoom: 18,
-  id: 'mapbox/streets-v11',
-  tileSize: 512,
-  zoomOffset: -1,
-  accessToken: 'your.mapbox.access.token'
-}).addTo(map);
+var prevBtn = document.querySelector("#prevBtn");
+var nextBtn = document.querySelector("#nextBtn"); //counter
+
+var counter = 1;
+var size = carouselImages[0].clientWidth;
+carouselSlide.style.transform = "translateX(" + -size * counter + "px)"; //button listeners
+
+nextBtn.addEventListener("click", function () {
+  if (counter >= carouselImages.length - 1) return;
+  carouselSlide.style.transition = "transform 0.4s ease-in-out";
+  counter++;
+  carouselSlide.style.transform = "translateX(" + -size * counter + "px)";
+});
+prevBtn.addEventListener("click", function () {
+  if (counter <= 0) return;
+  carouselSlide.style.transition = "transform 0.4s ease-in-out";
+  counter--;
+  carouselSlide.style.transform = "translateX(" + -size * counter + "px)";
+});
+carouselSlide.addEventListener("transitionend", function () {
+  if (carouselImages[counter].id === "lastClone") {
+    carouselSlide.style.transition = "none";
+    counter = carouselImages.length - 2;
+    carouselSlide.style.transform = "translateX(" + -size * counter + "px)";
+  }
+
+  if (carouselImages[counter].id === "firstClone") {
+    carouselSlide.style.transition = "none";
+    counter = carouselImages.length - counter;
+    carouselSlide.style.transform = "translateX(" + -size * counter + "px)";
+  }
+});
 
 /***/ }),
 
@@ -2232,24 +2254,6 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
-
-/***/ }),
-
-/***/ "./resources/js/leaflet.js":
-/*!*********************************!*\
-  !*** ./resources/js/leaflet.js ***!
-  \*********************************/
-/***/ (() => {
-
-var map = L.map('map').setView([51.505, -0.09], 13);
-L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-  attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-  maxZoom: 18,
-  id: 'mapbox/streets-v11',
-  tileSize: 512,
-  zoomOffset: -1,
-  accessToken: 'your.mapbox.access.token'
-}).addTo(map);
 
 /***/ }),
 

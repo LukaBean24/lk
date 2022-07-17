@@ -1,11 +1,14 @@
 <?php
 
+use App\Http\Controllers\AdminCarouselController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminNotificationController;
 use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\AdminPostController;
 use App\Http\Controllers\AdminStationController;
 use App\Http\Controllers\AdminUsersController;
 use App\Http\Controllers\AdminVacancyController;
+use App\Http\Controllers\AdminPriceController;
 use App\Http\Controllers\CabinetController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\InvoiceController;
@@ -13,6 +16,8 @@ use App\Http\Controllers\LangController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionController;
+use App\Models\Price;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,13 +36,16 @@ Route::get('/lang/{locale}',[LangController::class, 'change']);
 
 // Main Pages Routes
 Route::get('/', [IndexController::class, "index"]);
-Route::get('/posts/{link}', [IndexController::class, 'singlePost']);
+Route::get('/posts/{id}', [IndexController::class, 'singlePost']);
 Route::get('/vacancies', [IndexController::class, 'vacancies']);
 Route::get('/vacancies/{vacancy}', [IndexController::class, "singleVacancy"]);
 Route::get('/news', [IndexController::class, 'news']);
 Route::get('/stations', [IndexController::class, 'stations']);
 Route::get('/management', [IndexController::class, 'management']);
 Route::get('/contact', [IndexController::class, 'contact']);
+Route::get('/prices-history', [IndexController::class, 'priceHistory']);
+Route::get('/cards', [IndexController::class, 'cards']);
+Route::get('/about-us', [IndexController::class, 'aboutUs']);
 
 
 // Login and Logout Routes
@@ -65,6 +73,7 @@ Route::get('/admin', [AdminController::class, 'index'])->middleware('admin');
 Route::post('/admin/order-change', [AdminOrderController::class, 'update'])->middleware('admin');
 Route::post('/admin/posts/create',[AdminPostController::class, "store"])->middleware('admin');
 Route::get('/admin/posts',[AdminPostController::class, "index"])->middleware('admin');
+Route::post('/admin/posts/{id}',[AdminPostController::class, "remove"])->middleware('admin');
 Route::get('/admin/posts/create',[AdminPostController::class, "create"])->middleware('admin');
 Route::get('/admin/users', [AdminUsersController::class, 'index'])->middleware('admin');
 Route::get('/admin/users/{user}', [AdminUsersController::class, 'edit'])->middleware('admin');
@@ -80,3 +89,18 @@ Route::get('/admin/vacancies/create', [AdminVacancyController::class, 'create'])
 Route::post('/admin/vacancies/create', [AdminVacancyController::class, 'store'])->middleware('admin');
 Route::get('/admin/stations', [AdminStationController::class, 'index'])->middleware('admin');
 Route::post('/admin/stations/create', [AdminStationController::class, 'store'])->middleware('admin');
+Route::get('/admin/prices', [AdminPriceController::class, 'index'])->middleware('admin');
+Route::get('/admin/notification', [AdminNotificationController::class, 'index'])->middleware('admin');
+Route::get('/admin/notification/delete/{notification}', [AdminNotificationController::class, 'delete'])->middleware('admin');
+Route::post('/admin/notification/create', [AdminNotificationController::class, 'store'])->middleware('admin');
+Route::post('/admin/prices/update', [AdminPriceController::class, 'storePrices'])->middleware('admin');
+Route::put('/admin/discounts/update', [AdminPriceController::class, 'storeDiscounts'])->middleware('admin');
+Route::post('/admin/discount-block/{user}', [AdminUsersController::class, 'discountBlock'])->middleware('admin');
+Route::get('/admin/carousel', [AdminCarouselController::class, 'index'])->middleware('admin');
+Route::post('/admin/carousel/create', [AdminCarouselController::class, 'store'])->middleware('admin');
+Route::delete('/admin/carousel/{id}/delete', [AdminCarouselController::class, 'delete'])->middleware('admin');
+Route::post('/admin/passive', [AdminController::class, 'passive'])->middleware('admin');
+Route::post('/admin/active', [AdminController::class, 'active'])->middleware('admin');
+Route::get('/test', function() {
+    return view("test");
+});

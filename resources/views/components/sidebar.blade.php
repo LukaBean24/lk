@@ -1,4 +1,4 @@
-<div class="w-3/4 h-screen bg-lk-main fixed top-0 -right-full duration-200 shadow-2xl flex justify-center items-center" id="sidebar">
+<div class="w-3/4 h-screen bg-lk-main fixed top-0 -right-full duration-200 shadow-2xl flex justify-center items-center z-50" id="sidebar">
 <p class="text-4xl font-bold absolute top-4 left-4 text-white" id="close">X</p>
 <div class="w-full h-2/5 flex flex-col items-center justify-evenly">
     <a href="/cards">

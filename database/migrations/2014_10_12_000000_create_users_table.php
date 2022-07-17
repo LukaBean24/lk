@@ -19,9 +19,10 @@ return new class extends Migration
             $table->string('company_name')->nullable();
             $table->string('customer_name');
             $table->string('customer_last');
-            $table->string('customer_id')->unique();
-            $table->string('email')->unique();
-            $table->bigInteger('phone');
+            $table->string('username')->nullable();
+            $table->string('customer_id');
+            $table->string('email');
+            $table->text('phone');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('discount')->nullable();

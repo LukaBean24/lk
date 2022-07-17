@@ -21,7 +21,7 @@
     <div class="w-screen min-h-screen flex flex-col justify-start items-center">
         <div class="w-4/5 h-24 bg-lk-main mt-8 px-8 flex justify-evenly shadow-xl">
             <div class="w-24 h-full p-2">
-                <img src="http://www.lukoil.ge/img/luk.png" alt="Logo" class="w-full h-full object-cover object-center">
+                <img src="{{asset('images/luk.png')}}" alt="Logo" class="w-full h-full object-cover object-center">
             </div>
             <div class="w-full h-full flex justify-center items-center">
                 <p class="text-4xl text-white">

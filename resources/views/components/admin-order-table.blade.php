@@ -12,7 +12,6 @@
                 <th scope="col" class="px-3 py-3 text-center text-sm  uppercase tracking-wide text-lk-main font-semibold">თარიღი</th>
                 <th scope="col" class="px-3 py-3 text-center text-sm  uppercase tracking-wide text-lk-main font-semibold">ინვოისი</th>
                 <th scope="col" class="px-3 py-3 text-center text-sm  uppercase tracking-wide text-lk-main font-semibold">სტატუსი</th>
-                <th scope="col" class="px-3 py-3 text-center text-sm  uppercase tracking-wide text-lk-main font-semibold">ბოლო შეცვლა</th>
                 <th scope="col" class="px-3 py-3 text-center text-sm  uppercase tracking-wide text-lk-main font-semibold">პერსონალიზაცია</th>
                 <th scope="col" class="px-3 py-3 text-center text-sm  uppercase tracking-wide text-lk-main font-semibold">საგადახდო დოკუმენტი</th>
                 <th scope="col" class="px-3 py-3 text-center text-sm  uppercase tracking-wide text-lk-main font-semibold">სტატუსის ცვლილება</th>
@@ -60,7 +59,6 @@
                     @default
                 @endswitch
                 </td>
-                  <td class="whitespace-nowrap px-3 py-4 text-sm text-lk-main font-semibold text-center">BOLO SHECVLA</td>
                   <td class="whitespace-nowrap px-3 py-4 text-sm text-lk-main font-semibold text-center">
                       @switch($order->personalization)
                           @case(null)

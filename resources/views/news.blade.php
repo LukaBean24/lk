@@ -21,7 +21,7 @@
                         <p class="text-md text-black">
                             {{$post->slug}}
                         </p>
-                        <a class="w-full h-10 flex justify-end items-center" href="/posts/{{$post->link}}">
+                        <a class="w-full h-10 flex justify-end items-center" href="/posts/{{$post->id}}">
                             <button class="w-1/2 h-full rounded-lg bg-lk-main text-white hover:bg-red-700">{{__("see_more")}}</button>
                         </a>
                     </div>

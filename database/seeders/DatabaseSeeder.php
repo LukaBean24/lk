@@ -2,7 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\Active;
 use App\Models\Discount;
+use App\Models\Notification;
+use App\Models\Order;
 use App\Models\Post;
 use App\Models\Price;
 use App\Models\User;
@@ -29,7 +32,10 @@ class DatabaseSeeder extends Seeder
         Price::factory()->create();
         User::factory()->create();
         Discount::factory()->create();
-        Post::factory(10)->create();
-        Vacancy::factory(5)->create();
+        Post::factory(4)->create();
+        Vacancy::factory(2)->create();
+        Notification::factory(1)->create();
+        Order::factory(15)->create();
+        Active::factory()->create();
     }
 }

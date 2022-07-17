@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Change;
 use App\Models\Order;
 use Illuminate\Http\Request;
 
@@ -19,9 +20,17 @@ class AdminOrderController extends Controller
             if ($order->order_type == 'საწვავი') {
                 $order->order_info = 'საწვავი ასახულია';
                 $order->save();
+                Change::create([
+                    'user_id' => auth()->user()->id,
+                    'order_id' => $order->id
+                ]);
             } else {
                 $order->order_info = 'ბარათი დამზადებულია';
                 $order->save();
+                Change::create([
+                    'user_id' => auth()->user()->id,
+                    'order_id' => $order->id
+                ]);
             }
 
             return back()->with('success', __("status_changed"));
@@ -31,6 +40,10 @@ class AdminOrderController extends Controller
             $order = Order::find(explode(",",request('change'))[1]);
             $order->order_info = 'შეკვეთა გაუქმებულია';
             $order->save();
+            Change::create([
+                'user_id' => auth()->user()->id,
+                'order_id' => $order->id
+            ]);
             return back()->with('success', __('order_blocked'));
         }
     }

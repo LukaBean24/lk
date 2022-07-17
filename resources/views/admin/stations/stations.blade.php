@@ -44,58 +44,88 @@
             <div class="w-full h-20 flex justify-center items-center bg-lk-main mt-20">
                 <p class="text-white text-xl font-semibold">სადგურების ჩამონათვალი</p>
             </div>
-            <div class="w-full h-14 grid grid-cols-9 gap-3 bg-lk-main mt-6">
+            <div class="w-full h-14 grid grid-cols-8 gap-3 bg-lk-main mt-6">
                 <div class="col-span-1 w-full h-full flex justify-center items-center ">
                     <p class="text-white text-md font-semibold">
                         #
                     </p>
                 </div>
-                <div class="col-span-2 w-full h-full flex justify-center items-center ">
+                <div class="col-span-1 w-full h-full flex justify-center items-center ">
                     <p class="text-white text-md font-semibold">
                         ნომერი
                     </p>
                 </div>
-                <div class="col-span-2 w-full h-full flex justify-center items-center ">
+                <div class="col-span-1 w-full h-full flex justify-center items-center ">
                     <p class="text-white text-md font-semibold">
                         ქალაქი
                     </p>
                 </div>
-                <div class="col-span-2 w-full h-full flex justify-center items-center ">
+                <div class="col-span-1 w-full h-full flex justify-center items-center ">
                     <p class="text-white text-md font-semibold">
                         მისამართი
                     </p>
                 </div>
-                <div class="col-span-2 w-full h-full flex justify-center items-center ">
+                <div class="col-span-1 w-full h-full flex justify-center items-center ">
                     <p class="text-white text-md font-semibold">
                         ტიპი
                     </p>
                 </div>
+                <div class="col-span-1 w-full h-full flex justify-center items-center ">
+                    <p class="text-white text-md font-semibold">
+                        ტელეფონის ნომერი
+                    </p>
+                </div>
+                <div class="col-span-1 w-full h-full flex justify-center items-center ">
+                    <p class="text-white text-md font-semibold">
+                        ელ-ფოსტა
+                    </p>
+                </div>
+                <div class="col-span-1 w-full h-full flex justify-center items-center ">
+                    <p class="text-white text-md font-semibold">
+                        მენეჯერი
+                    </p>
+                </div>
             </div>
             @foreach ($stations as $station)
-            <div class="w-full h-14 grid grid-cols-9 gap-3 bg-gray-200 mt-2 border-l-2 border-r-2 border-transparent hover:border-lk-main duration-150">
+            <div class="w-full h-24 grid grid-cols-8 gap-3 bg-gray-200 mt-2 border-l-2 border-r-2 border-transparent hover:border-lk-main duration-150">
                 <div class="col-span-1 w-full h-full flex justify-center items-center ">
                     <p class="text-lk-main text-md font-semibold">
                         {{$loop->iteration}}
                     </p>
                 </div>
-                <div class="col-span-2 w-full h-full flex justify-center items-center ">
+                <div class="col-span-1 w-full h-full flex justify-center items-center ">
                     <p class="text-lk-main text-md font-semibold">
                         {{$station->number}}
                     </p>
                 </div>
-                <div class="col-span-2 w-full h-full flex justify-center items-center ">
+                <div class="col-span-1 w-full h-full flex justify-center items-center ">
                     <p class="text-lk-main text-md font-semibold">
                         {{$station->city}}
                     </p>
                 </div>
-                <div class="col-span-2 w-full h-full flex justify-center items-center ">
+                <div class="col-span-1 w-full h-full flex justify-center items-center ">
                     <p class="text-lk-main text-md font-semibold">
                         {{$station->address}}
                     </p>
                 </div>
-                <div class="col-span-2 w-full h-full flex justify-center items-center ">
+                <div class="col-span-1 w-full h-full flex justify-center items-center ">
                     <p class="text-lk-main text-md font-semibold">
                         {{$station->type}}
+                    </p>
+                </div>
+                <div class="col-span-1 w-full h-full flex justify-center items-center ">
+                    <p class="text-lk-main text-md font-semibold">
+                        {{$station->phone}}
+                    </p>
+                </div>
+                <div class="col-span-1 w-full h-full flex justify-center items-center ">
+                    <p class="text-lk-main text-md font-semibold">
+                        {{$station->email}}
+                    </p>
+                </div>
+                <div class="col-span-1 w-full h-full flex justify-center items-center ">
+                    <p class="text-lk-main text-md font-semibold">
+                        {{$station->manager}}
                     </p>
                 </div>
             </div>

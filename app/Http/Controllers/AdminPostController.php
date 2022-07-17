@@ -51,4 +51,11 @@ class AdminPostController extends Controller
 
         return redirect('/admin/posts')->with('success', __('post_added'));
     }
+
+    public function remove($id)
+    {
+        Post::find($id)->delete();
+
+        return redirect('/admin/posts')->with('success', 'სტატია წაშლილია');
+    }
 }

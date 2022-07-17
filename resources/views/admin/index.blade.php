@@ -1,6 +1,19 @@
 <x-layout>
     <x-admin-navbar />
     <div class="w-screen h-auto flex flex-col justify-center items-center">
+        <div class="w-4/5 h-40 mt-8 flex flex-col justify-center items-center">
+        @if ($active == 'true')
+        <form action="/admin/passive" method="post">
+            @csrf
+            <button class="text-white bg-lk-main rounded-lg px-8 py-4">შეკვეთების გამორთვა</button>
+        </form>
+        @else
+        <form action="/admin/active" method="post">
+            @csrf
+            <button class="text-white bg-lk-main rounded-lg px-8 py-4">შეკვეთების ჩართვა</button>
+        </form>
+        @endif
+    </div>
         <x-price-index :prices="$prices"/>
         <div class="w-4/5 h-auto flex flex-col justify-center items-center">
             <div class="w-full h-60 mt-10">
@@ -20,10 +33,11 @@
             </div>
         </div>
     </div>
-    {{-- <div class="w-screen h-auto flex justify-center items-center">
+    @if (!$sum == null)
+        <div class="w-screen h-auto flex justify-center items-center">
         <div class="w-4/5 h-40 bg-lk-main mt-8">
             <div class="h-1/2 w-full flex justify-evenly items-center">
-                <p class="text-white text-md font-semibold">შემოსული ინვოისები: {{!$sum['sum_invoice'] ? "" : $sum['sum_invoice']}}</p>
+                <p class="text-white text-md font-semibold">შემოსული ინვოისები: {{$sum['sum_invoice'] == null ? "" : $sum['sum_invoice']}}</p>
                 <p class="text-white text-md font-semibold">გაუქმებული ინვოისები: {{$sum['sum_blocked']}}</p>
                 <p class="text-white text-md font-semibold">შეკვეთა მუშავდება: {{$sum['sum_pending']}}</p>
             </div>
@@ -33,7 +47,8 @@
                 <p class="text-white text-md font-semibold">ჯამურად გადახდილი თანხა: {{$sum['sum_money']}} ლ.</p>
             </div>
         </div>
-    </div> --}}
+    </div>
+    @endif
     <div class="w-screen h-auto flex justify-center items-center">
         <x-admin-order-table :orders="$orders"></x-admin-order-table>
     </div>
